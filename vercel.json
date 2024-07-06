@@ -1,0 +1,38 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "api/load_balancer.js",
+        "use": "@vercel/node"
+      },
+      {
+        "src": "api/api_server1.js",
+        "use": "@vercel/node"
+      },
+      {
+        "src": "api/api_server2.js",
+        "use": "@vercel/node"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/load_balancer",
+        "dest": "/api/load_balancer.js"
+      },
+      {
+        "src": "/api_server1",
+        "dest": "/api/api_server1.js"
+      },
+      {
+        "src": "/api_server2",
+        "dest": "/api/api_server2.js"
+      }
+    ],
+    "env": {
+        "API_SERVER_1_PORT": "8001",
+        "API_SERVER_2_PORT": "8002",
+        "API_SERVER_1_URL": "http://localhost:8001",
+        "API_SERVER_2_URL": "http://localhost:8002"
+    }
+  }
+  
